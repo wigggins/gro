@@ -1,7 +1,7 @@
 {
   "name": "gro",
-  "version": "0.0.1",
-  "description": "GRO is starting point for rapid development of projects using HTML5 and Sass",
+  "version": "0.0.2",
+  "description": "GRO is a boilerplate for quickly developing projects.",
   "repository": {
     "type": "git",
     "url": "https://github.com/wigggins/gro.git"

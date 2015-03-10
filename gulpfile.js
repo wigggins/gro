@@ -8,8 +8,8 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch'),
 	browserSync = require('browser-sync');
 
-// Build process
-gulp.task('build-process', function () {
+// Styles
+gulp.task('styles', function () {
     return gulp.src('./sass/gro.scss')
         .pipe(sass())
         .pipe(size({gzip: true, showFiles: true}))
@@ -41,8 +41,8 @@ gulp.task('bs-reload', function () {
 });
 
 
-gulp.task('default', ['build-process', 'vendor', 'browser-sync', 'bs-reload'], function() {
-	gulp.start('build-process', 'vendor');
-	gulp.watch('sass/*.scss', ['build-process']);
+gulp.task('default', ['styles', 'browser-sync', 'bs-reload'], function() {
+	gulp.start('styles');
+	gulp.watch('sass/*.scss', ['styles']);
 	gulp.watch('*.html', ['bs-reload']);
 });

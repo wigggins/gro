@@ -1,10 +1,10 @@
 # GRO
 (Work in Progress)
-GRO is starting point for rapid development of projects using HTML5 and Sass. Gulp is used as the build tool to maximize the accessibility of your project by making it as performant as possible.
+Boilerplate for quickly developing projects. Gulp is used as the build tool to maximize the accessibility of your project by making it as performant as possible.
 
-## Features
-sass compilation
-javascript and css minification
-autoprefixer
-image minification
-watch for file changes and initiates browser reload
+## What it do
+*sass compilation
+*javascript and css minification
+*autoprefixer
+*image minification (todo)
+*watch for file changes and initiates browser reload
