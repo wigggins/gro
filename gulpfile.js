@@ -21,10 +21,10 @@ gulp.task('styles', function () {
 
 // Process lib javascript files
 gulp.task('vendor', function() {  
-  return gulp.src('js/lib/*.js')
-    .pipe(concat('vendor.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('js/min/vendor.js'))
+    return gulp.src('js/lib/*.js')
+        .pipe(concat('vendor.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('js/min/vendor.js'))
 });
 
 // Starts a server using Browsersync

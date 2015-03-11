@@ -1,3 +1,28 @@
 /*	==========================
 	Grid
 	==========================	*/
+
+$max-width: 65em;	// Maximum width of container
+$col-total: 12;		// Total # of columns
+$gutter: 1em;		// Gutter for each column
+
+.row:before, 
+.row:after {
+	content:"";
+	display: table ;
+	clear:both;
+}
+
+[class*='column-'] {
+    float: left;
+    min-height: 1px;
+    padding: 1em;
+    width: 100%; 
+}   
+
+@for $i from 1 through $col-total {
+    .column-#{$i} { 
+        width: 100% / $col-total * $i;
+    }
+}
+
