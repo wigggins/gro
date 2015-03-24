@@ -13,16 +13,39 @@ $gutter: 1em;		// Gutter for each column
 	clear:both;
 }
 
-[class*='column-'] {
+[class*='col-'] {
     float: left;
     min-height: 1px;
-    padding: 1em;
+    padding: $gutter;
     width: 100%; 
 }   
 
+// TODO - Refactor
+
 @for $i from 1 through $col-total {
-    .column-#{$i} { 
+    .col-#{$i} { 
         width: 100% / $col-total * $i;
     }
 }
 
+@include break(md) {
+   @for $i from 1 through $col-total {
+        .col-#{$i}-md { 
+            width: 100% / $col-total * $i;
+        }
+    } 
+}
+@include break(lg) {
+   @for $i from 1 through $col-total {
+        .col-#{$i}-lg { 
+            width: 100% / $col-total * $i;
+        }
+    } 
+}
+@include break(xl) {
+   @for $i from 1 through $col-total {
+        .col-#{$i}-xl { 
+            width: 100% / $col-total * $i;
+        }
+    } 
+}

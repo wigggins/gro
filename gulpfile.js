@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 // Styles
 gulp.task('styles', function () {
     return gulp.src('./sass/gro.scss')
-        .pipe(sass())
+        .pipe(sass({errLogToConsole: true}))
         .pipe(size({gzip: true, showFiles: true}))
         .pipe(gulp.dest('./css/'))
         .pipe(minifyCSS())
@@ -43,6 +43,6 @@ gulp.task('bs-reload', function () {
 
 gulp.task('default', ['styles', 'browser-sync', 'bs-reload'], function() {
 	gulp.start('styles');
-	gulp.watch('sass/*.scss', ['styles']);
+	gulp.watch('sass/*.scss', ['styles','bs-reload']);
 	gulp.watch('*.html', ['bs-reload']);
 });

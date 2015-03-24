@@ -321,6 +321,9 @@ td, th {
   padding: 0; }
 
 /*	==========================
+	Base
+	==========================	*/
+/*	==========================
 	Grid
 	==========================	*/
 .row:before, .row:after {
@@ -328,47 +331,125 @@ td, th {
   display: table;
   clear: both; }
 
-[class*='column-'] {
+[class*='col-'] {
   float: left;
   min-height: 1px;
   padding: 1em;
   width: 100%; }
 
-.column-1 {
+.col-1 {
   width: 8.33333%; }
 
-.column-2 {
+.col-2 {
   width: 16.66667%; }
 
-.column-3 {
+.col-3 {
   width: 25%; }
 
-.column-4 {
+.col-4 {
   width: 33.33333%; }
 
-.column-5 {
+.col-5 {
   width: 41.66667%; }
 
-.column-6 {
+.col-6 {
   width: 50%; }
 
-.column-7 {
+.col-7 {
   width: 58.33333%; }
 
-.column-8 {
+.col-8 {
   width: 66.66667%; }
 
-.column-9 {
+.col-9 {
   width: 75%; }
 
-.column-10 {
+.col-10 {
   width: 83.33333%; }
 
-.column-11 {
+.col-11 {
   width: 91.66667%; }
 
-.column-12 {
+.col-12 {
   width: 100%; }
+
+@media (min-width: 48em) {
+  .col-1-md {
+    width: 8.33333%; }
+  .col-2-md {
+    width: 16.66667%; }
+  .col-3-md {
+    width: 25%; }
+  .col-4-md {
+    width: 33.33333%; }
+  .col-5-md {
+    width: 41.66667%; }
+  .col-6-md {
+    width: 50%; }
+  .col-7-md {
+    width: 58.33333%; }
+  .col-8-md {
+    width: 66.66667%; }
+  .col-9-md {
+    width: 75%; }
+  .col-10-md {
+    width: 83.33333%; }
+  .col-11-md {
+    width: 91.66667%; }
+  .col-12-md {
+    width: 100%; } }
+
+@media (min-width: 62em) {
+  .col-1-lg {
+    width: 8.33333%; }
+  .col-2-lg {
+    width: 16.66667%; }
+  .col-3-lg {
+    width: 25%; }
+  .col-4-lg {
+    width: 33.33333%; }
+  .col-5-lg {
+    width: 41.66667%; }
+  .col-6-lg {
+    width: 50%; }
+  .col-7-lg {
+    width: 58.33333%; }
+  .col-8-lg {
+    width: 66.66667%; }
+  .col-9-lg {
+    width: 75%; }
+  .col-10-lg {
+    width: 83.33333%; }
+  .col-11-lg {
+    width: 91.66667%; }
+  .col-12-lg {
+    width: 100%; } }
+
+@media (min-width: 75em) {
+  .col-1-xl {
+    width: 8.33333%; }
+  .col-2-xl {
+    width: 16.66667%; }
+  .col-3-xl {
+    width: 25%; }
+  .col-4-xl {
+    width: 33.33333%; }
+  .col-5-xl {
+    width: 41.66667%; }
+  .col-6-xl {
+    width: 50%; }
+  .col-7-xl {
+    width: 58.33333%; }
+  .col-8-xl {
+    width: 66.66667%; }
+  .col-9-xl {
+    width: 75%; }
+  .col-10-xl {
+    width: 83.33333%; }
+  .col-11-xl {
+    width: 91.66667%; }
+  .col-12-xl {
+    width: 100%; } }
 
 /*	==========================
 	Typography
