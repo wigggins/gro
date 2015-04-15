@@ -17,17 +17,24 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('./css/'))
         .pipe(minifyCSS())
         .pipe(rename('gro.min.css'))
-        .pipe(gulp.dest('./css/'))
+        .pipe(size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest('./css/'));
+});
+
+// JS Hint - Not included in default task to keep build clean. Run separately.
+gulp.task('lint', function() {
+    return gulp.src('js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 // Process javascript files
 gulp.task('scripts', function() {  
     return gulp.src('js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
         .pipe(concat('scripts.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('js/min/scripts.js'))
+        .pipe(rename('scripts.min.js'))
+        .pipe(gulp.dest('js/min'));
 });
 
 // Starts a server using Browsersync
@@ -47,5 +54,6 @@ gulp.task('bs-reload', function () {
 gulp.task('default', ['styles', 'scripts', 'browser-sync', 'bs-reload'], function() {
 	gulp.start('styles', 'scripts');
 	gulp.watch('sass/*.scss', ['styles','bs-reload']);
+    gulp.watch('js/*.js', ['scripts', 'bs-reload']);
 	gulp.watch('*.html', ['bs-reload']);
 });
