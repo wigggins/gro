@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	size = require('gulp-size'),
 	minifyCSS = require('gulp-minify-css'),
+    prefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
 	uglify = require('gulp-uglify'),
@@ -10,8 +11,11 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync');
 
 // Styles
+// Adds vendor prefixes, logs the file size, minifies, renames, 
+// then logs file size again
 gulp.task('styles', function () {
     return gulp.src('./sass/gro.scss')
+        .pipe(prefixer())
         .pipe(sass({errLogToConsole: true}))
         .pipe(size({gzip: true, showFiles: true}))
         .pipe(gulp.dest('./css/'))
@@ -21,7 +25,8 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('./css/'));
 });
 
-// JS Hint - Not included in default task to keep build clean. Run separately.
+// JS Hint - Not included in default task to keep build clean. 
+// Run separately using 'gulp lint'
 gulp.task('lint', function() {
     return gulp.src('js/*.js')
         .pipe(jshint())
