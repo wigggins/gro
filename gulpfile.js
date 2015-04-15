@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	size = require('gulp-size'),
 	minifyCSS = require('gulp-minify-css'),
 	concat = require('gulp-concat'),
+    jshint = require('gulp-jshint'),
 	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
 	sass = require('gulp-sass'),
@@ -19,12 +20,14 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('./css/'))
 });
 
-// Process lib javascript files
-gulp.task('vendor', function() {  
-    return gulp.src('js/lib/*.js')
-        .pipe(concat('vendor.js'))
+// Process javascript files
+gulp.task('scripts', function() {  
+    return gulp.src('js/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(concat('scripts.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('js/min/vendor.js'))
+        .pipe(gulp.dest('js/min/scripts.js'))
 });
 
 // Starts a server using Browsersync
@@ -41,8 +44,8 @@ gulp.task('bs-reload', function () {
 });
 
 
-gulp.task('default', ['styles', 'browser-sync', 'bs-reload'], function() {
-	gulp.start('styles');
+gulp.task('default', ['styles', 'scripts', 'browser-sync', 'bs-reload'], function() {
+	gulp.start('styles', 'scripts');
 	gulp.watch('sass/*.scss', ['styles','bs-reload']);
 	gulp.watch('*.html', ['bs-reload']);
 });

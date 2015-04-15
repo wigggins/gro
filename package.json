@@ -1,6 +1,6 @@
 {
   "name": "gro",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "GRO is a boilerplate for quickly developing projects.",
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "browser-sync": "^2.2.3",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.10.0",
     "gulp-minify-css": "^0.5.1",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^1.3.3",
