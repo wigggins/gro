@@ -20,3 +20,7 @@ JS Hint is included, but not apart of the default task. Run separately with
 
 	gulp lint
 
+### Included libraries
+I've included a couple common libraries to make offline development easier.
+* Normalize 3.0.2
+* jQuery 2.1.3
