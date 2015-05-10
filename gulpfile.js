@@ -14,13 +14,13 @@ var gulp = require('gulp'),
 // Adds vendor prefixes, logs the file size, minifies, renames, 
 // then logs file size again
 gulp.task('styles', function () {
-    return gulp.src('./sass/gro.scss')
+    return gulp.src('./sass/stylesheet.scss')
         .pipe(prefixer())
         .pipe(sass({errLogToConsole: true}))
         .pipe(size({gzip: true, showFiles: true}))
         .pipe(gulp.dest('./css/'))
         .pipe(minifyCSS())
-        .pipe(rename('gro.min.css'))
+        .pipe(rename('stylesheet.min.css'))
         .pipe(size({gzip: true, showFiles: true}))
         .pipe(gulp.dest('./css/'));
 });
@@ -56,9 +56,9 @@ gulp.task('bs-reload', function () {
 });
 
 
-gulp.task('default', ['styles', 'scripts', 'browser-sync', 'bs-reload'], function() {
+gulp.task('default', ['styles', 'scripts', 'browser-sync'], function() {
 	gulp.start('styles', 'scripts');
-	gulp.watch('sass/*.scss', ['styles','bs-reload']);
+	gulp.watch('sass/*.scss', ['styles', 'bs-reload']);
     gulp.watch('js/*.js', ['scripts', 'bs-reload']);
 	gulp.watch('*.html', ['bs-reload']);
 });
