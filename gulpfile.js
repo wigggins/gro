@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 // then logs file size again
 gulp.task('styles', function () {
     return gulp.src('./sass/stylesheet.scss')
-        .pipe(prefixer())
+        .pipe(prefixer({browsers: ['last 2 versions'], cascade: false}))
         .pipe(sass({errLogToConsole: true}))
         .pipe(size({gzip: true, showFiles: true, title:'Pre-minification'}))
         .pipe(gulp.dest('./css/'))
