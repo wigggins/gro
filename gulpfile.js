@@ -17,11 +17,11 @@ gulp.task('styles', function () {
     return gulp.src('./sass/stylesheet.scss')
         .pipe(prefixer())
         .pipe(sass({errLogToConsole: true}))
-        .pipe(size({gzip: true, showFiles: true}))
+        .pipe(size({gzip: true, showFiles: true, title:'Pre-minification'}))
         .pipe(gulp.dest('./css/'))
         .pipe(minifyCSS())
         .pipe(rename({suffix: '.min'}))
-        .pipe(size({gzip: true, showFiles: true}))
+        .pipe(size({gzip: true, showFiles: true, title:'Post-minification'}))
         .pipe(gulp.dest('./css/'));
 });
 
@@ -56,7 +56,6 @@ gulp.task('bs-reload', function () {
 });
 
 gulp.task('default', ['styles', 'scripts', 'browser-sync'], function() {
-	gulp.start('styles', 'scripts');
 	gulp.watch('sass/*.scss', ['styles', 'bs-reload']);
     gulp.watch('js/*.js', ['scripts', 'bs-reload']);
 	gulp.watch('*.html', ['bs-reload']);
