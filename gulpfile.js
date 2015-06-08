@@ -1,14 +1,14 @@
-var gulp = require('gulp'),
-	size = require('gulp-size'),
-	minifyCSS = require('gulp-minify-css'),
-    prefixer = require('gulp-autoprefixer'),
-	concat = require('gulp-concat'),
-    jshint = require('gulp-jshint'),
-	uglify = require('gulp-uglify'),
-	rename = require('gulp-rename'),
-	sass = require('gulp-sass'),
-	watch = require('gulp-watch'),
-	browserSync = require('browser-sync');
+var gulp        = require('gulp');
+var size        = require('gulp-size');
+var minifyCSS   = require('gulp-minify-css');
+var prefixer    = require('gulp-autoprefixer');
+var concat      = require('gulp-concat');
+var jshint      = require('gulp-jshint');
+var uglify      = require('gulp-uglify');
+var rename      = require('gulp-rename');
+var sass        = require('gulp-sass');
+var watch       = require('gulp-watch');
+var browserSync = require('browser-sync').create();
 
 // Styles
 // Adds vendor prefixes, logs the file size, minifies, renames, 
@@ -22,7 +22,8 @@ gulp.task('styles', function () {
         .pipe(minifyCSS())
         .pipe(rename({suffix: '.min'}))
         .pipe(size({gzip: true, showFiles: true, title:'Post-minification'}))
-        .pipe(gulp.dest('./css/'));
+        .pipe(gulp.dest('./css/'))
+        .pipe(browserSync.stream());
 });
 
 // JS Hint - Not included in default task to keep build clean. 
@@ -44,7 +45,7 @@ gulp.task('scripts', function() {
 
 // Starts a server using Browsersync
 gulp.task('browser-sync', function() {
-    browserSync({
+    browserSync.init({
         server: {
             baseDir: "./"
         }
@@ -52,11 +53,11 @@ gulp.task('browser-sync', function() {
 });
 // Reloads server
 gulp.task('bs-reload', function () {
-    browserSync.reload();
+    browserSync.reload;
 });
 
 gulp.task('default', ['styles', 'scripts', 'browser-sync'], function() {
-	gulp.watch('sass/*.scss', ['styles', 'bs-reload']);
+	gulp.watch('sass/*.scss', ['styles']);
     gulp.watch('js/*.js', ['scripts', 'bs-reload']);
 	gulp.watch('*.html', ['bs-reload']);
 });
