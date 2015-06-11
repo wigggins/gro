@@ -40,7 +40,8 @@ gulp.task('scripts', function() {
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('js/min'));
+        .pipe(gulp.dest('js/min'))
+        .pipe(browserSync.reload({stream: true}));
 });
 
 // Starts a server using Browsersync
@@ -53,11 +54,11 @@ gulp.task('browser-sync', function() {
 });
 // Reloads server
 gulp.task('bs-reload', function () {
-    browserSync.reload;
+    browserSync.reload();
 });
 
 gulp.task('default', ['styles', 'scripts', 'browser-sync'], function() {
-	gulp.watch('sass/*.scss', ['styles']);
-    gulp.watch('js/*.js', ['scripts', 'bs-reload']);
-	gulp.watch('*.html', ['bs-reload']);
+    gulp.watch('sass/*.scss', ['styles']);
+    gulp.watch('js/*.js', ['scripts']);
+    gulp.watch('*.html', ['bs-reload']);
 });
